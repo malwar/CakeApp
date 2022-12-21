@@ -1,4 +1,4 @@
-*
+/*
  * Starter Project for Messenger Platform Quick Start Tutorial
  *
  * Remix this as the starting point for following the Messenger Platform
