@@ -30,3 +30,4 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
+    - run: node start app.js # add this new line    
