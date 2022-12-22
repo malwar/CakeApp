@@ -30,4 +30,4 @@ jobs:
     - run: npm install
     - run: npm run build --if-present
     - run: npm test
-    - run: node start app.js # add this new line    
+    - run: node start /home/runner/work/CakeApp/CakeApp/app.js # add this new line    
