@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facebook Messenger Webview</title>
+</head>
+
+<body>
+    <h1>Hello World</h1>
+    <button onclick="myFunction1()">Close</button>
+    <p id="demo"></p>
+    <script>
+        (function () {
+            window.addEventListener('iticksInit', async function () {
+                IticksMessengerExtensions.requestCloseBrowser()
+            })
+        })();
+    </script>
+    <script>
+        /** adding the Messenger Extensions SDK 
+         * Source: https://developers.facebook.com/docs/messenger-platform/webview/extensions */
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) { return; }
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/messenger.Extensions.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'Messenger'));
+
+        /** the Messenger Extensions JS SDK is done loading 
+        window.extAsyncInit = function () {
+            myFunction1();
+            //test
+        };*/
+
+      function myFunction1() {
+            var event = new CustomEvent('iticksInit');
+            window.IticksMessengerExtensions = {
+                /** close the webview and return the user to the conversation in Messenger. */
+            requestCloseBrowser() {
+                    MessengerExtensions.requestCloseBrowser(function success() {
+                    // webview closed
+                    }, function error(err) {
+                            // an error occurred
+                            //document.write(err);
+                            console.log("error", err);
+                            //window.close();
+                        });
+                    }
+                };
+                /** dispact custom iticksInit event  */
+                window.dispatchEvent(event);
+            }
+        </script>
+    </body>
+</html>
